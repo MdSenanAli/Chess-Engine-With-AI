@@ -1,7 +1,7 @@
 # Chess-Engine-With-AI
 ### Author - Mohammad Senan Ali
 ---
-In this project I will create a fully functioning Chess Engine in Python.
+In this project I will create a fully functioning Chess Engine in Python. Also the library used is pygame.
 
 Main goal is to design a structure in such a way that we are able to implement AI algorithms like mini-max, alpha-beta pruning, and Some reinforcement learning ideas.
 
