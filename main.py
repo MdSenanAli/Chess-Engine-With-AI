@@ -28,11 +28,10 @@ class Main:
                     sys.exit()
 
                 elif event == pygame.MOUSEBUTTONDOWN:
-                    print("clicked")
+                    # Will add more code
+                    print("None")
+
                     
-            list_item = ['a','b','c','d']
-            for i in list_item:
-                print(list_item[i])
 
             pygame.display.update()
 

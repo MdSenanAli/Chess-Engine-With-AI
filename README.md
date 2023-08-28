@@ -10,3 +10,8 @@ Main goal is to design a structure in such a way that we are able to implement A
 - Create a basic layout of a chess board.
 - Show Pieces
 - Allow to rotate board to play against any color.
+
+
+## Progress:
+### 28 August 2023
+- [] To make the chess board 8X8 Matrix.
