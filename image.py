@@ -12,7 +12,7 @@ class Image:
     def image_list(self):
         for color in self.colors:
             for piece in self.pieces:
-                image_path = os.path.join(f"/gameAssets/images/{color}-{piece}-{self.piece_type}.png")
+                image_path = os.path.join(f"gameAssets\images\{color}-{piece}-{self.piece_type}.png")
                 self.image_dict[f"{color}-{piece}"] = pygame.image.load(image_path)
         
         return self.image_dict

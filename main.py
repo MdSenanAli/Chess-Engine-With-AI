@@ -4,6 +4,7 @@ import sys
 
 # Import all the constants to this file
 from constant import *
+from game import Game
 
 # from game import Game
 
@@ -16,10 +17,11 @@ class Main:
 
         # Initialising the screen for the pygame display main window
         self.screen = pygame.display.set_mode((WIDTH, HEIGHT))
+        self.game = Game()
 
     def game_loop(self):
         screen = self.screen
-
+        game = self.game
         while True:
             # Event Handlers
             for event in pygame.event.get():
@@ -31,7 +33,7 @@ class Main:
                     # Will add more code
                     print("None")
 
-                    
+            game.show_board(screen)
 
             pygame.display.update()
 
