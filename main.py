@@ -23,6 +23,10 @@ class Main:
         screen = self.screen
         game = self.game
         while True:
+
+            game.show_board(screen)
+            game.show_pieces(screen)
+            
             # Event Handlers
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -32,8 +36,6 @@ class Main:
                 elif event == pygame.MOUSEBUTTONDOWN:
                     # Will add more code
                     print("None")
-
-            game.show_board(screen)
 
             pygame.display.update()
 
