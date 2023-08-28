@@ -33,9 +33,9 @@ class Main:
                     pygame.quit()
                     sys.exit()
 
-                elif event == pygame.MOUSEBUTTONDOWN:
+                elif event.type == pygame.MOUSEBUTTONDOWN:
                     # Will add more code
-                    print("None")
+                    game.switch_player()
 
             pygame.display.update()
 
