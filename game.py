@@ -6,7 +6,7 @@ from image import Image
 
 class Game:
     def __init__(self) -> None:
-        self.board = Board(PLAY_BLACK)
+        self.board = Board(PLAY_WHITE)
 
     
     def show_board(self,screen):
