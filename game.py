@@ -28,7 +28,10 @@ class Game:
 
     def show_pieces(self, screen):
         for row, col in itertools.product(range(ROWS), range(COLS)):
-            if self.board.game_board[row][col] is not None:
+            if (
+                self.board.game_board[row][col] is not None
+                and self.board.game_board[row][col].dragged == False
+            ):
                 image = self.board.game_board[row][col].image
                 if not self.rotated:
                     image_center = (col * SQUARE, row * SQUARE)

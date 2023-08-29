@@ -4,6 +4,7 @@ class Piece:
         self.points = points
         self.image = image
         self.name = None
+        self.dragged = False
 
 
 class Pawn(Piece):

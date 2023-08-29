@@ -38,43 +38,60 @@ class Main:
         drag = self.drag
 
         while True:
-            game.show_board(screen)
-            game.show_pieces(screen)
+            self.display(game, screen, drag)
 
             # Event Handlers
             for event in pygame.event.get():
                 if event.type == pygame.MOUSEBUTTONDOWN:
-                    # Will add more code
-                    x, y = self.get_mouse_position()
-                    drag.set_init_pos(x, y)
-
-                    if board[y][x] is not None:  # It has a piece
-                        piece = board[y][x]
-                        drag.has_piece = piece
-                        drag.is_dragging = True
+                    self.handle_mouse_button_down(screen, game, board, drag)
 
                 elif event.type == pygame.MOUSEMOTION:
                     if drag.is_dragging:
-                        x, y = self.get_mouse_position()
+                        x, y = pygame.mouse.get_pos()
                         drag.update_final_pos(x, y)
+                        self.display(game, screen, drag)
 
                 elif event.type == pygame.MOUSEBUTTONUP:
                     if drag.is_dragging:
-                        x, y = self.get_mouse_position()
+                        x, y = pygame.mouse.get_pos()
                         drag.update_final_pos(x, y)
                         y_f, x_f = drag.get_final_pos()
                         y_i, x_i = drag.get_init_pos()
-                        if (x_i, y_f) != (x_f, y_f):
+                        board[x_i][y_i].dragged = False
+
+                        if (x_i, y_i) != (x_f, y_f):
                             board[x_f][y_f] = board[x_i][y_i]
                             board[x_i][y_i] = None
 
                     drag.clear_drag()
 
                 elif event.type == pygame.QUIT:
-                    pygame.quit()
-                    sys.exit()
+                    self.handle_quit()
 
             pygame.display.update()
+
+    # display function
+    def display(self, game, screen, drag):
+        game.show_board(screen)
+        game.show_pieces(screen)
+        drag.show_drag_piece(screen)
+
+    def handle_quit(self):
+        pygame.quit()
+        sys.exit()
+
+    def handle_mouse_button_down(self, screen, game, board, drag):
+        x, y = pygame.mouse.get_pos()
+        drag.set_init_pos(x, y)
+        x = x // SQUARE
+        y = y // SQUARE
+        if board[y][x] is not None:  # It has a piece
+            board[y][x].dragged = True
+            piece = board[y][x]
+            drag.has_piece = piece
+            drag.image = piece.image
+            drag.is_dragging = True
+            self.display(game, screen, drag)
 
 
 if __name__ == "__main__":

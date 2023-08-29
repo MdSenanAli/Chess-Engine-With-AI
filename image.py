@@ -14,7 +14,7 @@ class Image:
         # self.image_list()
 
     # Generates and returns a dictionary containing piece images for both colors.
-    def image_dictionary(self):
+    def image_dictionary(self, scale=SQUARE):
         for color in self.colors:
             for piece in self.pieces:
                 image_path = os.path.join(
@@ -23,7 +23,7 @@ class Image:
 
                 # Load and scale the image, then store it in the dictionary.
                 self.image_dict[f"{color}-{piece}"] = pygame.transform.scale(
-                    pygame.image.load(image_path), (SQUARE, SQUARE)
+                    pygame.image.load(image_path), (scale, scale)
                 )
 
         return self.image_dict
