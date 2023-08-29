@@ -2,6 +2,7 @@ import pygame
 import os
 from constant import *
 
+
 # This class manages the loading and scaling of images for chess pieces.
 class Image:
     def __init__(self, piece_type: str) -> None:
@@ -16,11 +17,13 @@ class Image:
     def image_dictionary(self):
         for color in self.colors:
             for piece in self.pieces:
-                image_path = os.path.join(f"gameAssets\images\{color}-{piece}-{self.piece_type}.png")
-                
+                image_path = os.path.join(
+                    f"gameAssets\images\{color}-{piece}-{self.piece_type}.png"
+                )
+
                 # Load and scale the image, then store it in the dictionary.
                 self.image_dict[f"{color}-{piece}"] = pygame.transform.scale(
                     pygame.image.load(image_path), (SQUARE, SQUARE)
                 )
-        
+
         return self.image_dict
