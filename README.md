@@ -11,7 +11,20 @@ Main goal is to design a structure in such a way that we are able to implement A
 - Show Pieces
 - Allow to rotate board to play against any color.
 
+## Task 2
+- Allow piece movement.
+- Enable drag and drop.
+
+## Task 3
+- Moves generation.
+- Basic validation of moves (w/o en-passant, checks, checkmate, castling)
+
 
 ## Progress:
 ### 28 August 2023
-- [] To make the chess board 8X8 Matrix.
+[X] To make the chess board 8X8 Matrix.
+### 29 August 2023
+[X] Pieces Visible, and moving pieces enabled (Validity of moves not implemented yet).
+### 30 August 2023
+[X] Move pieces by dragging, and pieces enlarged on clicking them.
+
