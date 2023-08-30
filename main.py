@@ -22,15 +22,6 @@ class Main:
         self.game = Game()
         self.drag = self.game.drag
 
-    def get_mouse_position(self):
-        mouse_loc_x, mouse_loc_y = pygame.mouse.get_pos()
-        tile_x, tile_y = mouse_loc_x // SQUARE, mouse_loc_y // SQUARE
-        return (
-            (tile_x, tile_y)
-            if self.game.current_player == "white"
-            else (ROWS - tile_x - 1, COLS - tile_y - 1)
-        )
-
     def game_loop(self):
         screen = self.screen
         game = self.game
@@ -89,7 +80,7 @@ class Main:
             board[y][x].dragged = True
             piece = board[y][x]
             drag.has_piece = piece
-            drag.image = piece.image
+            drag.image = drag.image_dict[piece.name]
             drag.is_dragging = True
             self.display(game, screen, drag)
 

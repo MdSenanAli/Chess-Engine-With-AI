@@ -5,6 +5,7 @@ import math
 
 class Drag:
     def __init__(self) -> None:
+        # Initialize drag attributes
         self.x = None
         self.y = None
         self.initial_x = None
@@ -18,41 +19,37 @@ class Drag:
         self.image = None
 
     def set_init_pos(self, x, y, curr_player="white"):
+        # Set initial drag position based on player
         self.x = x
         self.y = y
-        if curr_player == "white":
-            self.initial_x = x // SQUARE
-            self.initial_y = y // SQUARE
-        else:
-            self.initial_x = ROWS - (x // SQUARE) - 1
-            self.initial_y = COLS - (y // SQUARE) - 1
+        self.initial_x, self.initial_y = self.calculate_indices(x, y, curr_player)
 
     def update_final_pos(self, x, y, curr_player="white"):
+        # Update final drag position based on player
         self.x = x
         self.y = y
+        self.final_x, self.final_y = self.calculate_indices(x, y, curr_player)
+
+    def calculate_indices(self, row, col, curr_player):
         if curr_player == "white":
-            self.final_x = x // SQUARE
-            self.final_y = y // SQUARE
+            return (row // SQUARE, col // SQUARE)
         else:
-            self.final_x = ROWS - (x // SQUARE) - 1
-            self.final_y = COLS - (y // SQUARE) - 1
+            return (ROWS - (row // SQUARE) - 1, COLS - (col // SQUARE) - 1)
 
     def clear_drag(self):
-        self.initial_x = None
-        self.initial_y = None
-        self.final_x = None
-        self.final_y = None
-        self.has_piece = None
-        self.is_dragging = False
+        # Clear drag attributes
         self.image = None
 
     def get_final_pos(self):
+        # Get the final drag position
         return (self.final_x, self.final_y)
 
     def get_init_pos(self):
+        # Get the initial drag position
         return (self.initial_x, self.initial_y)
 
     def show_drag_piece(self, screen):
+        # Show the dragged piece on the screen
         if self.image is not None:
-            image_center = (self.x - 50, self.y - 50)
+            image_center = (self.x - DRAG_PIECE, self.y - DRAG_PIECE)
             screen.blit(self.image, image_center)
